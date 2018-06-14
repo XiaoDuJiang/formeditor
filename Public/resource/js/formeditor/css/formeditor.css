@@ -1,0 +1,497 @@
+body {
+	font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	box-sizing: border-box;
+}
+
+ul {
+	margin-bottom: 0;
+}
+
+label {
+	margin-bottom: 0;
+}
+
+a,
+a:visited,
+a:link {
+	color: #1ab394;
+}
+
+a:hover {
+	color: #18A689;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0;
+}
+
+.display-none {
+	display: none;
+}
+
+.font-md {
+	font-size: 14px;
+}
+
+.form-editor {
+	background-color: #f1f4f6;
+	padding: 20px;
+}
+
+.form-content {
+	background-color: white;
+	border: 1px solid #E7E7E7;
+	padding: 2px;
+	padding-bottom: 30px;
+}
+
+.form-line {
+	padding: 15px;
+	border-bottom: 1px dotted #E7E7E7;
+	font-size: 0;
+	*zoom: 1;
+}
+
+.form-section {
+	margin: 20px 0;
+}
+
+.form-line:after {
+	content: ".";
+	display: block;
+	visibility: hidden;
+	clear: both;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.title {
+	padding: 10px 15px;
+	font-size: 17px;
+	color: #333;
+	border-bottom: 1px solid #E7E7E7;
+}
+
+
+/*按钮样式*/
+
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	margin-right: 5px;
+}
+
+.btn-primary {
+	background-color: #1ab394;
+	border-color: #1ab394;
+	color: #FFFFFF;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+	background-color: #18a689;
+	border-color: #18a689;
+	color: #FFFFFF;
+}
+
+.btn-white {
+	border: 1px solid #E7E7E7;
+}
+
+.btn-cancel {
+	background-color: white;
+	border-color: #999;
+	color: #333;
+}
+
+.btn-cancel:hover,
+.btn-cancel:focus,
+.btn-cancel:active {
+	background-color: #E7E7E7;
+}
+
+
+/*大小样式 bootstrap同理*/
+
+[class*='form-size'] {
+	padding: 0 10px;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+.form-size-1 {
+	width: 8.3333333333%;
+}
+
+.form-size-2 {
+	width: 16.6666666666%;
+}
+
+.form-size-3 {
+	width: 25%;
+}
+
+.form-size-4 {
+	width: 33.3333333333%;
+}
+
+.form-size-5 {
+	width: 41.6666666666%;
+}
+
+.form-size-6 {
+	width: 50%;
+}
+
+.form-size-7 {
+	width: 58.3333333333%;
+}
+
+.form-size-8 {
+	width: 66.6666666666%;
+}
+
+.form-size-9 {
+	width: 75%;
+}
+
+.form-size-10 {
+	width: 83.3333333333%;
+}
+
+.form-size-11 {
+	width: 91.6666666666%;
+}
+
+.form-size-12 {
+	width: 100%;
+}
+
+
+/*表单固定细节样式*/
+
+.import:after {
+	content: "*";
+	color: red;
+}
+
+.form-section .normal:focus {
+	border-color: #1ab394;
+	outline: 0;
+}
+
+.form-section .normal {
+	border: 1px solid #e5e6e7;
+}
+
+.form-section .error {
+	border: 1px solid red;
+}
+
+.form-section .error:focus {
+	border-color: red;
+	outline: 0;
+}
+
+.ipt-line .prompt,
+.form-section .prompt {
+	color: #999;
+	font-size: 14px;
+	padding-top: 5px;
+	padding-left: 0px;
+}
+
+.ipt-box {
+	padding: 20px;
+	padding-top: 0px;
+	border: 1px dotted #E7E7E7;
+	margin: 10px 20px;
+}
+
+.ipt-box .title {
+	font-size: 16px;
+}
+
+.form-section label {
+	line-height: 34px;
+	font-size: 14px;
+	float: left;
+	font-weight: bold;
+}
+
+.form-section input[type=text],
+.form-section select,
+.form-section input[type=password],
+.form-section input[type=email],
+.form-section input[type=number] {	
+	background-color: #FFFFFF;
+	background-image: none;
+	border-radius: 1px;
+	color: inherit;
+	padding: 6px 12px;
+	-webkit-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+	font-size: 14px;
+	height: 34px !important;
+}
+
+.form-section textarea {
+	resize: none;
+	padding: 6px 12px;
+	height: 80px;
+}
+
+
+/*单选复选*/
+
+.form-radio div,
+.form-checkbox div {
+	display: inline-block;
+}
+
+.form-radio .radio-box,
+.form-checkbox .checkbox-box {
+	margin-right: 15px;
+}
+
+.form-radio .radio-square,
+.form-checkbox .checkbox-square {
+	height: 22px;
+	width: 22px;
+	background: url(../img/iptckra.png) no-repeat;
+	background-position: -120px 0;
+	position: relative;
+	top: 6px;
+	cursor: pointer;
+}
+
+.form-checkbox .checkbox-square {
+	background-position: 0 0;
+}
+
+.form-radio .checked .radio-square {
+	background-position: -168px 0 !important;
+}
+
+.form-checkbox .checked .checkbox-square {
+	background-position: -48px 0 !important;
+}
+
+.form-radio .nocheck .radio-square {
+	background-position: -216px 0 !important;
+	cursor: default;
+}
+
+.form-checkbox .nocheck .checkbox-square {
+	background-position: -96px 0 !important;
+	cursor: default;
+}
+
+.form-radio .radio-square:hover {
+	background-position: -144px 0;
+}
+
+.form-checkbox .checkbox-square:hover {
+	background-position: -24px 0;
+}
+
+.form-radio .radio-txt,
+.form-checkbox .checkbox-txt {
+	line-height: 34px;
+	font-size: 14px;
+	margin-left: 4px;
+}
+
+
+/*文件 图片*/
+
+.form-file {
+	line-height: 34px;
+	border: 1px dotted #E7E7E7;
+}
+
+
+/*其他样式*/
+
+.ipt-normal {
+	background-color: #FFFFFF;
+	background-image: none;
+	border-radius: 1px;
+	color: inherit;
+	padding: 6px 12px;
+	-webkit-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+	font-size: 14px;
+	height: 34px !important;
+	border: 1px solid #e5e6e7;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+.ipt-normal:focus {
+	border-color: #1ab394;
+	outline: 0;
+}
+
+.label-normal {
+	line-height: 34px;
+	margin: 0;
+	font-size: 14px;
+	color: black;
+}
+
+.table-normal {
+	border: 1px solid #999;
+	font-size: 14px;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.table-normal tbody {
+	width: 100%;
+}
+
+.table-normal tr th,
+.table-normal tr td {
+	text-align: center;
+	line-height: 24px;
+}
+
+.btn-box {
+	margin-top: 10px;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.ipt-line {
+	margin: 10px 0 0;
+	padding-bottom: 10px;
+	font-size: 0px;
+}
+
+.btn-sm {
+	font-size: 12px;
+	margin-right: 0;
+}
+
+.hover-menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #f2f8ef;
+	border: 1px solid #999;
+	border-radius: 3px;
+	z-index: 999999;
+	padding: 2px 15px;
+}
+
+.hover-menu ul {
+	padding: 0;
+}
+
+.hover-menu ul li {
+	margin: 0 15px;
+	display: inline-block;
+	cursor: pointer;
+	color: #1ab394;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.hover-menu ul li:hover {
+	color: #18A689;
+}
+
+/*改写样式*/
+
+.chosen-single,
+.chosen-choices {
+	background-color: #FFFFFF !important;
+	background-image: none !important;
+	border-radius: 1px !important;
+	color: inherit !important;
+	padding: 4px 12px !important;
+	line-height: 22px !important;
+	-webkit-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s !important;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s !important;
+	font-size: 14px !important;
+	height: 34px !important;
+	box-sizing: border-box;
+}
+
+.chosen-choices {
+	padding: 0 !important;
+}
+
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+	padding: 0px 12px !important;
+	line-height: 20px !important;
+	font-size: 14px !important;
+	margin: 0 !important;
+}
+
+.chosen-container-multi .chosen-choices li.search-choice {
+	background: #f1f1f1;
+	border: 1px solid #ededed;
+	border-radius: 2px;
+	box-shadow: none;
+	color: #333333;
+	cursor: default;
+	line-height: 13px;
+	margin: 3px 0 3px 5px;
+	padding: 3px 20px 3px 5px;
+	position: relative;
+}
+
+.chosen-container-multi .chosen-choices li {
+	display: inline-block;
+	float: none;
+}
+
+.chosen-container-active .chosen-single,
+.chosen-container-active .chosen-choices {
+	border-color: #1ab394;
+	outline: 0;
+}
+
+.chosen-container {
+	font-size: 14px !important;
+}
+
+.chosen-container-single .chosen-single {
+	color: rgb(102, 102, 102) !important;
+}
+
+.layui-layer-hplus .layui-layer-title {
+	background: #1ab394!important;
+}

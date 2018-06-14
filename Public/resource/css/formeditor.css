@@ -1,0 +1,103 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	box-sizing: border-box;
+	font-family: "microsoft yahei";
+	font-size: 16px;
+}
+
+ul {
+	list-style: none;
+}
+
+.display-none {
+	display: none;
+}
+
+.form-choose {
+	padding: 0px 20px;
+	height: 600px;
+	border-left: 1px solid #E7E7E7;
+	border-right: 1px solid #E7E7E7;
+}
+
+.form-choose-title {
+	font-size: 16px;
+	line-height: 25px;
+	border-bottom: 1px solid #E7E7E7;
+}
+
+.form-choose-list {
+	padding: 10px 0;
+}
+
+.form-choose-list li {
+	font-size: 16px;
+	line-height: 28px;
+	text-align: center;
+	cursor: pointer;
+	color: #1ab394;
+}
+
+.form-choose-list li:hover {
+	color: #006621;
+	background-color: #E7E7E7;
+}
+
+
+/*tab切换*/
+
+.tab-list {
+	padding: 0;
+	border-bottom: 1px solid #999;
+	margin-bottom: 30px;
+}
+
+.tab-list li {
+	display: inline-block;
+	float: left;
+	padding: 2px 5px;
+	margin: 0 1px;
+	color: #999;
+	line-height: 22px;
+	font-size: 14px;
+	background-color: #E7E7E7;
+	border: 1px solid #E7E7E7;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	cursor: pointer;
+}
+
+.tab-list .active {
+	background-color: #1AB394;
+	border: 1px solid #1AB394;
+	color: white;
+}
+
+.panel-header {
+	position: relative;
+	border-bottom: 1px solid #e4eaec;
+}
+
+.panel-title {
+	padding: 10px 15px;
+	font-size: 17px;
+	color: #333;
+}
+
+.panel-header-actions {
+	position: absolute;
+    top: 50%;
+    right: 15px;
+    margin: auto;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.panel-content {
+	padding: 15px;
+}

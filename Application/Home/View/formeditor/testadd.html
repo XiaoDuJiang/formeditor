@@ -1,0 +1,142 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title></title><link rel="stylesheet" type="text/css" href="__JS__/formeditor/css/formeditor.css" /><link rel="stylesheet" type="text/css" href="__CSS__/formeditor.css" /><script src="__JS__/jquery/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script><script src="__JS__/laydate/laydate.js" type="text/javascript" charset="utf-8"></script><script src="__JS__/chosen/chosen.jquery.js" type="text/javascript" charset="utf-8"></script><script src="__JS__/layer/layer.js" type="text/javascript" charset="utf-8"></script></head><body class="gray-bg" data-plugin="tooltip"><div id="createform-div"><div class="form-editor"><div class="form-content"><div class="title">test</div><form action="test" data-addurl="test" data-editorurl="" id="editor-form" method="post"><div class="form-line text-right"><button type="reset" class="btn btn-cancel" data-type="reset"><em class="fa fa-refresh"></em>&nbsp;重置</button><button type="submit" class="btn btn-primary" data-type="submit"><em class="fa fa-save"></em>&nbsp;保存</button></div></form></div></div><p><br></p></div><script type="text/javascript">
+var $doc = $("#createform-div");
+var Layer = layer;
+$doc.find(".chosen").chosen();
+$doc.find(".form-radio").each(function() {
+$raido_box = $(this);
+$raido_box.find(".radio-box").bind("click", function() {
+if($(this).attr("class").indexOf("nocheck") == -1) {
+if($(this).attr("class").indexOf("checked") == -1) {
+$raido_box.find(".radio-box").removeClass("checked");
+$raido_box.find(".radio-box").prop("checked", false);
+$(this).addClass("checked");
+var val = $(this).attr("data-value");
+$raido_box.prev().find("input").each(function() {
+$(this).prop("checked", false);
+if($(this).val() == val) {
+$(this).prop("checked", "checked");
+}
+});
+}
+}
+});
+});
+$doc.find(".form-checkbox").each(function() {
+$check_box = $(this);
+$check_box.find(".checkbox-box").each(function() {
+if($(this).attr("class").indexOf("checked") != -1) {
+var val = $(this).attr("data-value");
+$check_box.prev().find("input[value='" + val + "']").prop("checked", true);
+}
+});
+$check_box.find(".checkbox-box").bind("click", function() {
+if($(this).attr("class").indexOf("nocheck") == -1) {
+if($(this).attr("class").indexOf("checked") == -1) {
+$(this).addClass("checked");
+var val = $(this).attr("data-value");
+$check_box.prev().find("input").each(function() {
+if($(this).val() == val) {
+$(this).prop("checked", true);
+}
+});
+} else {
+$(this).removeClass("checked");
+var val = $(this).attr("data-value");
+$check_box.prev().find("input").each(function() {
+if($(this).val() == val) {
+$(this).prop("checked", false);
+}
+});
+}
+}
+});
+});
+$doc.find(".form-section[data-formtype='date']").each(function() {
+var $dataipt = $(this).find("input").eq(0);
+var extend = {};
+extend.elem = $dataipt[0];
+if($dataipt.attr('data-extype')) {
+extend.type = $dataipt.attr('data-extype');
+}
+if($dataipt.attr('data-exmin')) {
+if($dataipt.attr('data-exmin').indexOf("-") != -1) {
+extend.min = $dataipt.attr('data-exmin');
+} else {
+extend.min = parseInt($dataipt.attr('data-exmin'));
+}
+}
+if($dataipt.attr('data-exmax')) {
+if($dataipt.attr('data-exmax').indexOf("-") != -1){
+extend.max = $dataipt.attr('data-exmax');
+} else {
+extend.max = parseInt($dataipt.attr('data-exmax'));
+}
+}
+laydate.render(extend);
+});
+$doc.find("input").each(function() {
+if($(this).attr("data-validate")) {
+$(this).bind("change", function() {
+try {
+var reg = eval($(this).attr("data-validate"));
+} catch(e) {
+Layer.alert("创建表单正则表达式格式输入错误");
+}
+if(!reg.test($(this).val())) {
+$(this).removeClass("normal");
+$(this).addClass("error");
+$prompt = $(this).parent().find(".prompt");
+$prompt.text($prompt.attr("data-error"));
+} else {
+$(this).removeClass("error");
+$(this).addClass("normal");
+$prompt = $(this).parent().find(".prompt");
+$prompt.text("");
+}
+});
+}
+});
+$doc.find("form").submit(function() {
+var importflag = true;
+$doc.find(".import").each(function() {
+var formtype = $(this).parent().attr('data-formtype');
+var val;
+if( formtype== 'radio' || formtype == 'checkbox') {
+var formname = $(this).next().find("input").eq(0).attr("name");
+val = $("input[name='"+formname+"']:checked").val();
+} else {
+val = $(this).next().val();
+}
+if(!val) {
+importflag = false;
+return;
+}
+});
+if(!importflag) {
+Layer.alert("请将必填数据填写完整");
+return false;
+}
+var valudateflag = true;
+$doc.find("input").each(function() {
+if($(this).attr("data-validate")) {
+if($(this).val()) {
+var reg = eval($(this).attr("data-validate"));
+if(!reg.test($(this).val())) {
+$(this).removeClass("normal");
+$(this).addClass("error");
+$prompt = $(this).parent().find(".prompt");
+$prompt.text($prompt.attr("data-error"));
+valudateflag = false;
+return;
+}
+}
+}
+});
+if(!valudateflag) {
+return false;
+Layer.alert("表单验证错误");
+} else {
+return true;
+}
+});
+</script></body></html>

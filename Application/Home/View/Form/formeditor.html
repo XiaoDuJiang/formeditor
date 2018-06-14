@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>表单编辑</title>
+		<link rel="stylesheet" type="text/css" href="__JS__/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/formeditor.css" />
+		<script src="__JS__/require.js" data-main="__JS__/requireconf.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__JS__/requireconf.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body class="white-bg" data-plugin="tooltip">
+		<div class="page">
+			<div class="panel">
+				<div class="panel-header">
+					<div class="panel-title">表单编辑</div>
+					<div class="panel-header-actions">
+						<div id="alert_form" class="btn btn-sm btn-primary page-header-actions-item js-table-refresh"><i class="fa fa-sticky-note fa-fw"></i>表单属性设置</div>
+						<!--<div class="btn btn-sm btn-primary page-header-actions-item js-table-add" data-url="add"><i class="fa fa-plus fa-fw"></i>选择/新增表单</div>-->
+						<div class="btn btn-sm btn-primary page-header-actions-item js-table-add" data-url="add" id="save_form"><i class="fa fa-save fa-fw"></i>保存此表单</div>
+						<!--<div class="btn btn-sm btn-primary page-header-actions-item js-table-add" data-url="add"><i class="fa fa-save fa-fw"></i>表单另存为</div>-->
+					</div>
+				</div>
+				<div class="panel-content clearfix">
+					<div class="col-sm-2 form-choose">
+						<div class="form-choose-title">
+							<p>控件选择</p>
+						</div>
+						<ul class="form-choose-list">
+							<li id="addtext">
+								<div>文本框</div>
+							</li>
+							<li id="adddate">
+								<div>时间</div>
+							</li>
+							<li id="addtextarea">
+								<div>文本域</div>
+							</li>
+							<li id="addSelect">
+								<div>下拉菜单</div>
+							</li>
+							<li id="addRadio">
+								<div>单选框</div>
+							</li>
+							<li id="addChecked">
+								<div>复选框</div>
+							</li>
+							<li id="addFile">
+								<div>文件</div>
+								<!--文件 图片-->
+							</li>
+						</ul>
+					</div>
+					<div class="col-sm-10">
+						<script type="text/plain" id="formEditor" style="width:100%;height:500px;">
+							<!--<div class="form-editor">
+								<div class="form-content">
+									<div class="title">
+										表单名
+									</div>
+									<form action="" id="editor-form" method="post">
+										<div class="form-line">
+											<div class="form-section form-size-12">
+												<label class="form-size-2 import text-right">姓名</label>
+												<input type="text" class="form-size-10 normal" name=""  value="" />
+												<span class="form-size-2"></span><span class="prompt form-size-10">提示信息</span>
+											</div>
+											<div class="form-section form-size-12">
+												<label class="form-size-2 import text-right">姓名</label>
+												<input type="text" class="form-size-10 normal" name=""  value="" />
+											</div>
+
+											<div class="form-section form-size-6">
+												<label class="form-size-3 import text-right">姓名</label>
+												<input type="text" class="form-size-9 normal" name=""  value="" />
+											</div>
+											<div class="form-section form-size-6">
+												<label class="form-size-3 import text-right">时间</label>
+												<input type="text" class="form-size-9 normal" name="" id="formdate1" value="" />
+											</div>
+
+											<div class="form-section form-size-12">
+												<label class="form-size-2 text-right">备注</label>
+												<textarea class="form-size-10 normal" name="" rows="" cols=""></textarea>
+											</div>
+
+											<div class="form-section form-size-12">
+												<label class="form-size-2 import text-right">select</label>
+												<select name="" class="form-size-10 normal">
+													<option value="">选项 1</option>
+													<option value="">选项 2</option>
+													<option value="">选项 3</option>
+													<option value="">选项 4</option>
+												</select>
+											</div>
+
+											<div class="form-section form-size-6">
+												<label class="form-size-3 import text-right">chosen</label>
+												<select name="" class="form-size-9 normal" id="chosen1">
+													<option value="">选项 1</option>
+													<option value="">选项 2</option>
+													<option value="">选项 3</option>
+													<option value="">选项 4</option>
+												</select>
+											</div>
+
+											<div class="form-section form-size-6">
+												<label class="form-size-3 import text-right">chosen(多选)</label>
+												<select name="" class="form-size-9 normal" id="chosen2" multiple data-placeholder="请选择项目">
+													<option value="">选项 1</option>
+													<option value="">选项 2</option>
+													<option value="">选项 3</option>
+													<option value="">选项 4</option>
+												</select>
+											</div>
+
+											<div class="form-section form-size-6">
+												<label class="form-size-3 import text-right import">单选</label>
+												<div style="display: none;">
+													<input type="radio" name="1" value="1" /><span>选项1</span>
+													<input type="radio" name="1" value="1" /><span>选项1</span>
+													<input type="radio" name="1" value="1" /><span>选项1</span>
+													<input type="radio" name="1" value="1" /><span>选项1</span>
+												</div>
+												<div class="form-radio form-size-9" data-name="1">
+													<div class="radio-box checked" data-value="1">
+														<div class="radio-square"></div>
+														<div class="radio-txt">选项1</div>
+													</div>
+													<div class="radio-box nocheck" data-value="1">
+														<div class="radio-square"></div>
+														<div class="radio-txt">选项2</div>
+													</div>
+													<div class="radio-box" data-value="1">
+														<div class="radio-square"></div>
+														<div class="radio-txt">选项3</div>
+													</div>
+													<div class="radio-box" data-value="1">
+														<div class="radio-square"></div>
+														<div class="radio-txt">选项4</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="form-section form-size-6">
+												<label class="form-size-3 import text-right import">复选</label>
+												<div style="display: none;">
+													<input type="checkbox" name="1" value="1" /><span>选项1</span>
+													<input type="checkbox" name="1" value="1" /><span>选项1</span>
+													<input type="checkbox" name="1" value="1" /><span>选项1</span>
+													<input type="checkbox" name="1" value="1" /><span>选项1</span>
+												</div>
+												<div class="form-checkbox form-size-9" data-name="1">
+													<div class="checkbox-box checked" data-value="1">
+														<div class="checkbox-square"></div>
+														<div class="checkbox-txt">选项1</div>
+													</div>
+													<div class="checkbox-box nocheck" data-value="1">
+														<div class="checkbox-square"></div>
+														<div class="checkbox-txt">选项2</div>
+													</div>
+													<div class="checkbox-box" data-value="1">
+														<div class="checkbox-square"></div>
+														<div class="checkbox-txt">选项3</div>
+													</div>
+													<div class="checkbox-box" data-value="1">
+														<div class="checkbox-square"></div>
+														<div class="checkbox-txt">选项4</div>
+													</div>
+												</div>
+											</div>
+
+											<label class="form-size-2 text-right import">文件</label>
+											<input type="file" class="form-size-10 form-file" multiple="multiple" name=""  value="" />
+										</div>
+
+										<div class="form-line text-right">
+											<button type="button" class="btn btn-cancel" data-type="reset"><i class="fa fa-refresh"></i>&nbsp;重置</button>
+											<button type="button" class="btn btn-primary" data-type="submit"><i class="fa fa-save"></i>&nbsp;保存</button>
+										</div>
+
+									</form>
+								</div>
+							</div>-->
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="hover-menu" style="display: none;">
+			<ul>
+				<li id="form-delete">删除</li>
+				<li id="form-up">上移</li>
+				<li id="form-down">下移</li>
+				<li id="form-editor">编辑</li>
+			</ul>
+		</div>
+		
+		
+		<div id="model-alert" class="display-none">
+			<div class="form-size-12 padding-15">
+				<div class="tab-content" data-tab="add">
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">表单名:</label>
+						<input class="form-size-5 ipt-normal form-name" type="text" name="" value="" />
+					</div>
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">存储文件名:</label>
+						<input class="form-size-9 ipt-normal form-filename" type="text" name=""  value="" />
+					</div>
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">提交方式:</label>
+						<select class="form-size-9 ipt-normal form-method" name="" >
+							<option value="post">post</option>
+							<option value="get">get</option>
+						</select>
+					</div>
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">添加的url:</label>
+						<input class="form-size-9 ipt-normal form-addurl" type="text" name=""  value="" />
+					</div>
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">编辑的url:</label>
+						<input class="form-size-9 ipt-normal form-editorurl" type="text" name=""  value="" />
+					</div>
+					<div class="ipt-line clearfix">
+						<div class="form-size-12 text-right btn-box">
+							<div class="btn btn-white add-cancel"><i class="fa fa-reply"></i>&nbsp;取消</div>
+							<div class="btn btn-primary forminfo-save"><i class="fa fa-save"></i>&nbsp;保存</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="model-1" class="display-none">
+			<div class="form-size-12 padding-15">
+				<ul class="tab-list clearfix">
+					<li data-tab="add" class="active">新增表单</li>
+					<li data-tab="choose">选择表单</li>
+					<li data-tab="alert">修改表单</li>
+				</ul>
+
+				<div class="tab-content" data-tab="add">
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">表单名:</label>
+						<input class="form-size-5 ipt-normal" type="text" name=""  value="" />
+					</div>
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">添加的url:</label>
+						<input class="form-size-9 ipt-normal" type="text" name=""  value="" />
+					</div>
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">编辑的url:</label>
+						<input class="form-size-9 ipt-normal" type="text" name=""  value="" />
+					</div>
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">备注:</label>
+						<input class="form-size-9 ipt-normal" type="text" name=""  value="" />
+					</div>
+					<div class="ipt-line clearfix">
+						<div class="form-size-12 text-right btn-box">
+							<div class="btn btn-white"><i class="fa fa-reply"></i>&nbsp;取消</div>
+							<div class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;保存</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="tab-content display-none" data-tab="choose">
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">选择表单:</label>
+						<select name="" class="form-size-9 ipt-normal" id="choose-editor-form">
+							<option value="">表单1</option>
+							<option value="">表单2</option>
+							<option value="">表单3</option>
+						</select>
+					</div>
+					<div class="ipt-line clearfix">
+						<div class="form-size-12 text-right btn-box">
+							<div class="btn btn-white"><i class="fa fa-reply"></i>&nbsp;取消</div>
+							<div class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;保存</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="tab-content display-none" data-tab="alert">
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">表单名:</label>
+						<input class="form-size-5 ipt-normal" type="text" name=""  value="" />
+					</div>
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">添加的url:</label>
+						<input class="form-size-9 ipt-normal" type="text" name=""  value="" />
+					</div>
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">编辑的url:</label>
+						<input class="form-size-9 ipt-normal" type="text" name=""  value="" />
+					</div>
+					<div class="ipt-line clearfix">
+						<label class="form-size-2 label-normal text-right">备注:</label>
+						<input class="form-size-9 ipt-normal" type="text" name=""  value="" />
+					</div>
+					<div class="ipt-line clearfix">
+						<div class="form-size-12 text-right btn-box">
+							<div class="btn btn-white"><i class="fa fa-reply"></i>&nbsp;取消</div>
+							<div class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;保存</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="model-text" class="display-none">
+			<div class="form-size-12 padding-15">
+				<div class="title">
+					文本框
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">绑定值(name):</label>
+					<input class="form-size-3 ipt-normal" type="text" name="name"  value="" />
+					<div class="form-size-1"></div>
+					<label class="form-size-2 label-normal import text-right">标题:</label>
+					<input class="form-size-3 ipt-normal" type="text" name="label"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">类型:</label>
+					<select class="form-size-3 ipt-normal" name="type">
+						<option value="text">text</option>
+						<option value="password">password</option>
+						<option value="number">number</option>
+						<option value="email">email</option>
+					</select>
+				</div>	
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal text-right">提示:</label>
+					<input class="form-size-9 ipt-normal" type="text" name="prompt"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal text-right">默认值:</label>
+					<input class="form-size-9 ipt-normal" type="text" name="value"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal text-right">验证规则:</label>
+					<input class="form-size-9 ipt-normal" type="text" name="validate"  value="" />
+					<span class="form-size-2"></span><span class="prompt form-size-9">正则(/^$/); 内置值(email、tel(手机)、idcard(身份证)、chinese、number、english、url)</span>
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal text-right">错误提示:</label>
+					<input class="form-size-9 ipt-normal" type="text" name="errortip"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">是否必填:</label>
+					<select class="form-size-3 ipt-normal" name="import">
+						<option value="1">否</option>
+						<option value="import">是</option>
+					</select>
+					<div class="form-size-1"></div>
+					<label class="form-size-2 label-normal import text-right">宽度:</label>
+					<select class="form-size-3 ipt-normal" name="size">
+						<option value="6">50%</option>
+						<option value="12">100%</option>
+					</select>
+				</div>
+				<div class="ipt-line">
+					<div class="form-size-12 text-right btn-box">
+						<div class="btn btn-white add-cancel"><i class="fa fa-reply"></i>&nbsp;取消</div>
+						<div class="btn btn-primary add-text add-save"><i class="fa fa-save"></i>&nbsp;保存</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="model-date" class="display-none">
+			<div class="form-size-12 padding-15">
+				<div class="title">
+					时间
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">绑定值(name):</label>
+					<input class="form-size-3 ipt-normal" type="text" name="name"  value="" />
+					<div class="form-size-1"></div>
+					<label class="form-size-2 label-normal import text-right">标题:</label>
+					<input class="form-size-3 ipt-normal" type="text" name="label"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal text-right">提示:</label>
+					<input class="form-size-9 ipt-normal" type="text" name="prompt"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal text-right">默认值:</label>
+					<input class="form-size-9 ipt-normal" type="text" name="value"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">是否必填:</label>
+					<select class="form-size-3 ipt-normal" name="import">
+						<option value="1">否</option>
+						<option value="import">是</option>
+					</select>
+					<div class="form-size-1"></div>
+					<label class="form-size-2 label-normal import text-right">宽度:</label>
+					<select class="form-size-3 ipt-normal" name="size">
+						<option value="6">50%</option>
+						<option value="12">100%</option>
+					</select>
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal text-right">时间类别:</label>
+					<select class="form-size-9 ipt-normal" name="extendtype">
+						<option value="1">yyyy-MM-dd</option>
+						<option value="year">yyyy</option>
+						<option value="month">yyyy-MM</option>
+						<option value="time">HH:mm:ss</option>
+						<option value="datetime">y-M-d H:m:s</option>
+					</select>
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal text-right">最小时间:</label>
+					<input class="form-size-3 ipt-normal" type="text" name="extendmin"  value="" />
+					<div class="form-size-1"></div>
+					<label class="form-size-2 label-normal text-right">最大时间:</label>
+					<input class="form-size-3 ipt-normal" type="text" name="extendmax"  value="" />
+					<span class="form-size-2"></span><span class="prompt form-size-9">格式为yyyy-MM-dd;或者整数(如-7表示今天以前七天)</span>
+				</div>
+				<div class="ipt-line">
+					<div class="form-size-12 text-right btn-box">
+						<div class="btn btn-white add-cancel"><i class="fa fa-reply"></i>&nbsp;取消</div>
+						<div class="btn btn-primary add-text add-save"><i class="fa fa-save"></i>&nbsp;保存</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="model-textarea" class="display-none">
+			<div class="form-size-12 padding-15">
+				<div class="title">
+					文本域
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">绑定值(name):</label>
+					<input class="form-size-3 ipt-normal" type="text" name="name"  value="" />
+					<div class="form-size-1"></div>
+					<label class="form-size-2 label-normal import text-right">标题:</label>
+					<input class="form-size-3 ipt-normal" type="text" name="label"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal text-right">提示:</label>
+					<input class="form-size-9 ipt-normal" type="text" name="prompt"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal text-right">默认值:</label>
+					<input class="form-size-9 ipt-normal" type="text" name="value"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal text-right">验证规则:</label>
+					<input class="form-size-9 ipt-normal" type="text" name="validate"  value="" />
+					<span class="form-size-2"></span><span class="prompt form-size-9">正则(/^$/); 内置值(email、tel(手机)、idcard(身份证)、chinese、number、english、url)</span>
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal text-right">错误提示:</label>
+					<input class="form-size-9 ipt-normal" type="text" name="errortip"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">是否必填:</label>
+					<select class="form-size-3 ipt-normal" name="import">
+						<option value="1">否</option>
+						<option value="import">是</option>
+					</select>
+					<div class="form-size-1"></div>
+					<label class="form-size-2 label-normal import text-right">宽度:</label>
+					<select class="form-size-3 ipt-normal" name="size">
+						<option value="6">50%</option>
+						<option value="12">100%</option>
+					</select>
+				</div>
+				<div class="ipt-line">
+					<div class="form-size-12 text-right btn-box">
+						<div class="btn btn-white add-cancel"><i class="fa fa-reply"></i>&nbsp;取消</div>
+						<div class="btn btn-primary add-textarea add-save"><i class="fa fa-save"></i>&nbsp;保存</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="model-select" class="display-none">
+			<div class="form-size-12 padding-15">
+				<div class="title">
+					选择框
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">绑定值(name):</label>
+					<input class="form-size-3 ipt-normal" type="text" name="name"  value="" />
+					<label class="form-size-2 label-normal import text-right">标题:</label>
+					<input class="form-size-3 ipt-normal" type="text" name="label"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">是否必填:</label>
+					<select class="form-size-3 ipt-normal" name="import">
+						<option value="import">是</option>
+						<option value="1">否</option>
+					</select>
+					<label class="form-size-2 label-normal import text-right">宽度:</label>
+					<select class="form-size-3 ipt-normal" name="size">
+						<option value="6">50%</option>
+						<option value="12">100%</option>
+					</select>
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">风格:</label>
+					<select class="form-size-3 ipt-normal" name="type">
+						<option value="1">普通</option>
+						<option value="chosen-1">chosen</option>
+						<option value="chosen-2">chosen(多选)</option>
+					</select>
+				</div>
+				<div class="ipt-box">
+					<div class="title">
+						选项
+					</div>
+					<div class="ipt-line">
+						<label class="form-size-2 label-normal text-right">value:</label>
+						<input class="form-size-3 ipt-normal child-value" type="text" name=""  value="" />
+						<label class="form-size-2 label-normal text-right">text:</label>
+						<input class="form-size-3 ipt-normal child-text" type="text" name=""  value="" />
+						<div class="form-size-2" style="position: relative;top: -5px;">
+							<div class="btn btn-primary add-childs" class="add-childs"><i class="fa fa-plus"></i>&nbsp;添加</div>
+						</div>
+					</div>
+					<div class="ipt-line text-center">
+						<div class="form-size-11">
+							<table class="table-normal child-table" border="" cellspacing="" cellpadding="">
+								<tr>
+									<th>value</th>
+									<th>text</th>
+									<th>操作</th>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="ipt-line">
+					<div class="form-size-12 text-right btn-box">
+						<div class="btn btn-white add-cancel"><i class="fa fa-reply"></i>&nbsp;取消</div>
+						<div class="btn btn-primary add-select add-save"><i class="fa fa-save"></i>&nbsp;保存</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="model-radio" class="display-none">
+			<div class="form-size-12 padding-15">
+				<div class="title">
+					单选框
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">绑定值(name):</label>
+					<input class="form-size-3 ipt-normal" type="text" name="name"  value="" />
+					<label class="form-size-2 label-normal import text-right">标题:</label>
+					<input class="form-size-3 ipt-normal" type="text" name="label"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">是否必填:</label>
+					<select class="form-size-3 ipt-normal" name="import">
+						<option value="import">是</option>
+						<option value="1">否</option>
+					</select>
+					<label class="form-size-2 label-normal import text-right">宽度:</label>
+					<select class="form-size-3 ipt-normal" name="size">
+						<option value="6">50%</option>
+						<option value="12">100%</option>
+					</select>
+				</div>
+				<div class="ipt-box">
+					<div class="title">
+						选项
+					</div>
+					<div class="ipt-line">
+						<label class="form-size-2 label-normal text-right">value:</label>
+						<input class="form-size-3 ipt-normal child-value" type="text" name=""  value="" />
+						<label class="form-size-2 label-normal text-right">text:</label>
+						<input class="form-size-3 ipt-normal child-text" type="text" name=""  value="" />
+						<div class="form-size-2"></div>
+						<div class="ipt-line">
+						</div>
+						<label class="form-size-2 label-normal text-right">选中状态:</label>
+						<select class="form-size-3 ipt-normal child-check">
+							<option value="">默认</option>
+							<option value="checked">选中</option>
+							<option value="nocheck">禁用</option>
+						</select>
+						<div class="form-size-5"></div>
+						<div class="form-size-2" style="position: relative;top: -5px;">
+							<div class="btn btn-primary add-childs"><i class="fa fa-plus"></i>&nbsp;添加</div>
+						</div>
+					</div>
+					<div class="ipt-line text-center">
+						<div class="form-size-12">
+							<table class="table-normal child-table" border="" cellspacing="" cellpadding="">
+								<tr>
+									<th>value</th>
+									<th>text</th>
+									<th>选中状态</th>
+									<th>操作</th>
+								</tr>
+
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="ipt-line">
+					<div class="form-size-12 text-right btn-box">
+						<div class="btn btn-white add-cancel"><i class="fa fa-reply"></i>&nbsp;取消</div>
+						<div class="btn btn-primary add-radio add-save"><i class="fa fa-save"></i>&nbsp;保存</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="model-checkbox" class="display-none">
+			<div class="form-size-12 padding-15">
+				<div class="title">
+					复选框
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">绑定值(name):</label>
+					<input class="form-size-3 ipt-normal" type="text" name="name"  value="" />
+					<label class="form-size-2 label-normal import text-right">标题:</label>
+					<input class="form-size-3 ipt-normal" type="text" name="label"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">是否必填:</label>
+					<select class="form-size-3 ipt-normal" name="import">
+						<option value="import">是</option>
+						<option value="1">否</option>
+					</select>
+					<label class="form-size-2 label-normal import text-right">宽度:</label>
+					<select class="form-size-3 ipt-normal" name="size">
+						<option value="6">50%</option>
+						<option value="12">100%</option>
+					</select>
+				</div>
+				<div class="ipt-box">
+					<div class="title">
+						选项
+					</div>
+					<div class="ipt-line">
+						<label class="form-size-2 label-normal text-right">value:</label>
+						<input class="form-size-3 ipt-normal child-value" type="text" name=""  value="" />
+						<label class="form-size-2 label-normal text-right">text:</label>
+						<input class="form-size-3 ipt-normal child-text" type="text" name=""  value="" />
+						<div class="form-size-2"></div>
+						<div class="ipt-line">
+						</div>
+						<label class="form-size-2 label-normal import text-right">选中状态:</label>
+						<select class="form-size-3 ipt-normal child-check">
+							<option value="1">默认</option>
+							<option value="checked">选中</option>
+							<option value="nocheck">禁用</option>
+						</select>
+						<div class="form-size-5"></div>	
+						<div class="form-size-2" style="position: relative;top: -5px;">
+							<div class="btn btn-primary add-childs"><i class="fa fa-plus"></i>&nbsp;添加</div>
+						</div>
+					</div>
+					<div class="ipt-line text-center">
+						<div class="form-size-12">
+							<table class="table-normal child-table" border="" cellspacing="" cellpadding="">
+								<tr>
+									<th>value</th>
+									<th>text</th>
+									<th>选中状态</th>
+									<th>操作</th>
+								</tr>
+
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="ipt-line">
+					<div class="form-size-12 text-right btn-box">
+						<div class="btn btn-white add-cancel"><i class="fa fa-reply"></i>&nbsp;取消</div>
+						<div class="btn btn-primary add-checkbox add-save"><i class="fa fa-save"></i>&nbsp;保存</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="model-file" class="display-none">
+			<div class="form-size-12 padding-15">
+				<div class="title">
+					文件
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">绑定值(name):</label>
+					<input class="form-size-3 ipt-normal" type="text" name="name"  value="" />
+					<label class="form-size-2 label-normal import text-right">标题:</label>
+					<input class="form-size-3 ipt-normal" type="text" name="label"  value="" />
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">文件数:</label>
+					<select class="form-size-3 ipt-normal" name="multiple">
+						<option value="1">单文件</option>
+						<option value="multiple">多文件</option>
+					</select>
+					<label class="form-size-2 label-normal import text-right">过滤:</label>
+					<select class="form-size-3 ipt-normal" name="accept">
+						<option value="all">全部文件</option>
+						<option value="image">图片</option>
+					</select>
+				</div>
+				<div class="ipt-line">
+					<label class="form-size-2 label-normal import text-right">是否必填:</label>
+					<select class="form-size-3 ipt-normal" name="import">
+						<option value="1">否</option>
+						<option value="import">是</option>
+					</select>
+					<label class="form-size-2 label-normal import text-right">宽度:</label>
+					<select class="form-size-3 ipt-normal" name="size">
+						<option value="6">50%</option>
+						<option value="12">100%</option>
+					</select>
+				</div>
+				<div class="ipt-line">
+					<div class="form-size-12 text-right btn-box">
+						<div class="btn btn-white add-cancel"><i class="fa fa-reply"></i>&nbsp;取消</div>
+						<div class="btn btn-primary add-file add-save"><i class="fa fa-save"></i>&nbsp;保存</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="__JS__/form_editor.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>
